@@ -53,7 +53,7 @@ img_sidebar[1].image(img,width=100)
 
 #################### Authentication ####################
 
-users = pd.read_csv('Usuarios//Usuarios.csv', encoding='latin-1')
+users = pd.read_csv('Usuarios//Usuarios.csv', encoding='latin-1', errors='ignore')
 users['pass'] = users['pass'].astype(str)
 users['pass'] = '000' + users['pass']
 hashed_passwords = stauth.hasher(users['pass']).generate()
