@@ -73,38 +73,39 @@ if st.session_state['authentication_status']:
         prod = pd.read_csv('Data//PRODUCTION.csv')
         prod.columns = [x.lower() for x in prod.columns]
         prod.columns = [x.capitalize() for x in prod.columns]
-        prod['Fecha'] = pd.to_datetime(prod['Fecha']).dt.date
+        prod['Fecha'] = pd.to_datetime(prod['Fecha']).dt.strftime('%d-%m-%Y')
         prod['Pozo'] = prod['Pozo'].str.replace('SG-','SITIO GRANDE ')
         
         press_pr = pd.read_csv('Data//RPFC-PLANO DE REFERENCIA.csv')
-        press_pr['fecha'] = pd.to_datetime(press_pr['fecha']).dt.date
+        press_pr['fecha'] = pd.to_datetime(press_pr['fecha']).dt.strftime('%d-%m-%Y')
         press_pr.columns = [x.capitalize() for x in press_pr.columns]
                 
         press_nmd = pd.read_csv('Data//RPFC-NMD.csv')
-        press_nmd['fecha'] = pd.to_datetime(press_nmd['fecha']).dt.date
+        press_nmd['fecha'] = pd.to_datetime(press_nmd['fecha']).dt.strftime('%d-%m-%Y')
         press_nmd.columns = [x.capitalize() for x in press_nmd.columns]
         
         coords = pd.read_csv('Data//COORDS.csv')
         coords.columns = [x.lower() for x in coords.columns]
         
         salinity = pd.read_csv('Data//SALINITY.csv')
-        salinity['Fecha'] = pd.to_datetime(salinity['Fecha']).dt.date
+        salinity['Fecha'] = pd.to_datetime(salinity['Fecha']).dt.strftime('%d-%m-%Y')
         salinity.columns = [x.capitalize() for x in salinity.columns]
         salinity['Pozo'] = salinity['Pozo'].str.replace('SITIO_GDE_','SITIO GRANDE ')
         salinity = salinity.sort_values(by='Fecha')
         
         raa_rga = pd.read_csv('Data//RAA-RGA.csv')
-        raa_rga['fecha'] = pd.to_datetime(raa_rga['fecha']).dt.date
+        raa_rga['fecha'] = pd.to_datetime(raa_rga['fecha']).dt.strftime('%d-%m-%Y')
         raa_rga['gor'] = raa_rga['gor'].astype(float)
         raa_rga['wor'] = raa_rga['wor'].astype(float)
         raa_rga['wc'] = raa_rga['wc'].astype(float)
         raa_rga.columns = [x.capitalize() for x in raa_rga.columns]
         
         well_sum = pd.read_csv('Data//SUMMARY.csv')
-        well_sum['Fecha de terminacion'] = pd.to_datetime(well_sum['Fecha de terminacion']).dt.date
+        well_sum['Fecha de terminacion'] = pd.to_datetime(well_sum['Fecha de terminacion']).dt.strftime('%d-%m-%Y')
         well_sum.columns = [x.upper() for x in well_sum.columns]
         
         completions = pd.read_csv('Data//RESUMEN DE POZOS Y LITOLOGÍA.csv')
+        completions['Fecha'] = pd.to_datetime(completions['Fecha']).dt.strftime('%d-%m-%Y')
         completions.columns = [x.capitalize() for x in completions.columns]
 
         return prod, press_pr, press_nmd, coords, raa_rga, well_sum, completions, salinity
@@ -149,7 +150,7 @@ if st.session_state['authentication_status']:
            
            ### PRESION ###
             press_field = pd.read_csv('Data//RPFC-PR-ANUAL.csv')
-            press_field['Fecha'] = pd.to_datetime(press_field['Fecha']).dt.date
+            press_field['Fecha'] = pd.to_datetime(press_field['Fecha']).dt.strftime('%d-%m-%Y')
             press_field.columns = [x.capitalize() for x in press_field.columns]
             
             press_pozo = press_pr[press_pr['Pozo'] == filt_pozos]
