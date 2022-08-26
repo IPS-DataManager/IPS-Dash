@@ -24,8 +24,6 @@ def format_float(value):
     return f'{value:,.2f}'
 pd.options.display.float_format = format_float
 
-str = unicode(str, errors='ignore')
-
 #################### Convertion Units ####################
 
 # Metros cubicos a barriles (aceite)
