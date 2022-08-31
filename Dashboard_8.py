@@ -57,10 +57,9 @@ users = pd.read_csv('Usuarios//Usuarios.csv', encoding='utf-8')
 users['pass'] = users['pass'].astype(str)
 users['pass'] = '000' + users['pass']
 hashed_passwords = stauth.hasher(users['pass']).generate()
-authenticator = stauth.authenticate(users['nombre_c'], users['usuario'], hashed_passwords, 'IPS_Dash','key_1', cookie_expiry_days=30)
+authenticator = stauth.authenticate(users['nombre_c'], users['usuario'], hashed_passwords, 'IPS_Dashboard','key_1', cookie_expiry_days=30)
 
 name, authentication_status = authenticator.login('Login','main')
-
 
 if st.session_state['authentication_status']:
     st.write('Bienvenido *%s*' % (st.session_state['name']))
