@@ -36,7 +36,7 @@ B = 1000000000
 #################### PAGE CONFIG ####################
 
 APP_TITLE = "IPS Dash"
-img=Image.open('Imagenes\IPS.png')
+img=Image.open('Imagenes//IPS.png')
 st.set_page_config(
     page_title = APP_TITLE,
     page_icon = img,
