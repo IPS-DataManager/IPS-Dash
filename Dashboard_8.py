@@ -50,7 +50,7 @@ img_sidebar[1].image(img,width=100)
 
 #################### Data ####################
 
-@st.cache
+#@st.cache
 def data():
     prod = pd.read_csv('Data//PRODUCTION.csv')
     prod.columns = [x.lower() for x in prod.columns]
